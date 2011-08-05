@@ -49,9 +49,12 @@ class JsANTLRSourceFile (SourceFile):
                 self.stack.pop()
 
         tree_file_name  = 'temporary_ast.xml'
-        producer_class_path = os.path.join('.','js_antlr', 'TreeProducer.jar')
-        antlr_class_path = os.path.join('.','antlr_runtime', 'antlr-3.1.1.jar')
-        if os.name in ['mac', 'posix']:
+
+	curr_dir = os.path.dirname( __file__ )
+        producer_class_path = os.path.join(curr_dir,'js_antlr', 'TreeProducer.jar')
+        antlr_class_path = os.path.join(curr_dir,'antlr_runtime', 'antlr-3.1.1.jar')
+        
+	if os.name in ['mac', 'posix']:
             class_path_delimeter = ':'
         elif os.name in ['nt', 'dos', 'ce']:
             class_path_delimeter = ';'
